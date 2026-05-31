@@ -1,0 +1,11 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="TMGSSaveEditor.Core.TextControl">
+    <StackPanel Spacing="5" Margin="10">
+        <TextBlock Name="Label1" Foreground="{StaticResource BrushTextMain}" />
+        <TextBox Name="TextBox1" 
+                 AcceptsReturn="True" 
+                 Height="280" 
+                 LostFocus="TextBox1_LostFocus" />
+    </StackPanel>
+</UserControl>

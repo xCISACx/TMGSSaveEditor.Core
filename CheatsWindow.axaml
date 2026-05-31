@@ -1,0 +1,62 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TMGSSaveEditor.Core.CheatsWindow"
+        Title="Cheats Menu"
+        Width="350" Height="800"
+        WindowStartupLocation="CenterOwner"
+        CanResize="True">
+
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
+        </Style>
+    </Window.Styles>
+
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="15">
+            <TextBlock Text="CHEATS" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            
+            <Button Name="ButtonUnlockAllClothes" Classes="SaveBtn" Content="UNLOCK ALL CLOTHES" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonUnlockAllClothes_Click"/>
+            <Button Name="ButtonMaxStats" Classes="SaveBtn" Content="MAX ALL STATS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxStats_Click"/>
+            <Button Name="ButtonMaxMoney" Classes="SaveBtn" Content="MAX MONEY" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxMoney_Click"/>
+            <Button Name="ButtonNoStress" Classes="SaveBtn" Content="NO STRESS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonNoStress_Click"/>
+            
+            <Separator Margin="0,10,0,10" Background="{StaticResource BrushTextMain}"/>
+
+            <Button Name="ButtonMaxAffection" Classes="SaveBtn" Content="MAX ALL GUY AFFECTIONS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxAffection_Click"/>
+
+            <TextBlock Text="Specific Guy Affection" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            
+            <ComboBox Name="ComboApproachCharSelect" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="Kazama"/>
+                <ComboBoxItem Content="Sassa"/>
+                <ComboBoxItem Content="Honda"/>
+                <ComboBoxItem Content="Nanatsumori"/>
+                <ComboBoxItem Content="Hiiragi"/>
+                <ComboBoxItem Content="Himuro"/>
+                <ComboBoxItem Content="Mikage"/>
+                <ComboBoxItem Content="Daichi"/>
+            </ComboBox>
+            
+            <Button Name="ButtonMaxAffectionSpecific" Classes="SaveBtn" Content="MAX GUY AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxAffectionSpecific_Click"/>
+            
+            <Separator Margin="0,10,0,10" Background="{StaticResource BrushTextMain}"/>
+
+            <Button Name="ButtonMaxFriendAffection" Classes="LoadBtn" Content="MAX ALL FRIEND AFFECTIONS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxFriendAffection_Click"/>
+            
+            <TextBlock Text="Specific Friend Affection" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            
+            <ComboBox Name="ComboFriendCharSelect" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="Michiru"/>
+                <ComboBoxItem Content="Hikaru"/>
+            </ComboBox>
+            
+            <Button Name="ButtonMaxFriendAffectionSpecific" Classes="LoadBtn" Content="MAX FRIEND AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxFriendAffectionSpecific_Click"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>

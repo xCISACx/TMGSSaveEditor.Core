@@ -1,0 +1,10 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="TMGSSaveEditor.Core.DateControl">
+    <StackPanel Spacing="5" Margin="10">
+        <TextBlock Name="Label1"/>
+        <DatePicker Name="DatePicker1"
+                    SelectedDateChanged="DatePicker1_SelectedDateChanged"
+                    Height="30"/>
+    </StackPanel>
+</UserControl>

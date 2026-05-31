@@ -1,0 +1,12 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="TMGSSaveEditor.Core.EnumControl">
+    <StackPanel Spacing="5" Margin="10">
+        
+        <TextBlock Name="Label1" Foreground="{StaticResource BrushTextMain}" />
+        
+        <ComboBox Name="ComboBox1" 
+                  Width="170" 
+                  SelectionChanged="ComboBox1_SelectionChanged" />
+    </StackPanel>
+</UserControl>

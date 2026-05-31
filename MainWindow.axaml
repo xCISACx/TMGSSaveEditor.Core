@@ -1,0 +1,72 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TMGSSaveEditor.Core.MainWindow"
+        Title="TMGS 4 Save Editor"
+        Width="1280" Height="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <Style Selector="Image.HoverJump">
+            <Setter Property="Margin" Value="0,0,0,-60"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <ThicknessTransition Property="Margin" Duration="0:0:0.1"/>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Image.HoverJump:pointerover">
+            <Setter Property="Margin" Value="0,0,0,-10"/> 
+        </Style>
+
+        <Style Selector="TreeViewItem">
+            <Setter Property="BorderBrush" Value="{StaticResource SaveButtonBackgroundMain}" /> 
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="4,6,4,6" />
+            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,*">
+        
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" Spacing="10">
+    
+            <Button Name="ButtonLoad" Classes="LoadBtn" Content="LOAD FILE" Click="ButtonLoad_Click"/>
+    
+            <Button Name="ButtonSave" Classes="SaveBtn" Content="SAVE FILE" Click="ButtonSave_Click"/>
+
+            <Button Name="ButtonOpenCheats" Classes="LoadBtn" Content="CHEATS MENU" Click="ButtonOpenCheats_Click"/>
+
+        </StackPanel>
+
+        <TreeView Name="TreeView1" Grid.Row="1" Grid.Column="0" 
+          Margin="10,10,-30,130" 
+          BorderBrush="{StaticResource SaveButtonBackgroundPressed}"
+          BorderThickness="1"
+          CornerRadius="5"
+          Background="White"
+          SelectionMode="Multiple"
+          SelectionChanged="TreeView1_SelectionChanged"/>
+
+        <Panel Name="PanelEditors" Grid.Row="1" Grid.Column="1" 
+       Margin="50,10,10,130"
+       Background="Transparent"/>
+
+        <Image Name="PictureBoxCharacter"
+               Grid.Row="1" Grid.Column="0"
+               Classes="HoverJump"
+               Source="avares://TMGS4SaveEditor/Assets/character.png"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom"
+               Width="140" Height="140"
+               PointerPressed="PictureBoxCharacter_PointerPressed" />
+
+        <Image Name="PictureBoxLogo"
+               Grid.Row="1" Grid.Column="1"
+               Source="avares://TMGS4SaveEditor/Assets/logo.png"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Bottom"
+               Width="200" Height="100" 
+               Margin="0,0,10,10" />
+    </Grid>
+</Window>
