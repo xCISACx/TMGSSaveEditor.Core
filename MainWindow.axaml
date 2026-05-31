@@ -45,7 +45,6 @@
           BorderThickness="1"
           CornerRadius="5"
           Background="White"
-          SelectionMode="Multiple"
           SelectionChanged="TreeView1_SelectionChanged"/>
 
         <Panel Name="PanelEditors" Grid.Row="1" Grid.Column="1" 
