@@ -18,6 +18,25 @@ namespace TMGSSaveEditor.Core
         public CheatsWindow(MainWindow mainWindow) : this()
         {
             _mainWindow = mainWindow;
+
+            if (_mainWindow._savedata.ApproachCharacterNames != null)
+            {
+                ComboApproachCharSelect.ItemsSource = _mainWindow._savedata.ApproachCharacterNames;
+
+                // Select the first character automatically so the box isn't blank
+                if (ComboApproachCharSelect.ItemCount > 0)
+                {
+                    ComboApproachCharSelect.SelectedIndex = 0;
+                }
+
+                ComboFriendCharSelect.ItemsSource = _mainWindow._savedata.FriendCharacterNames;
+
+                // Select the first character automatically so the box isn't blank
+                if (ComboFriendCharSelect.ItemCount > 0)
+                {
+                    ComboFriendCharSelect.SelectedIndex = 0;
+                }
+            }
         }
 
         private void UnlockAllClothes()

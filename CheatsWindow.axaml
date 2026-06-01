@@ -31,16 +31,7 @@
 
             <TextBlock Text="Specific Guy Affection" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             
-            <ComboBox Name="ComboApproachCharSelect" HorizontalAlignment="Stretch">
-                <ComboBoxItem Content="Kazama"/>
-                <ComboBoxItem Content="Sassa"/>
-                <ComboBoxItem Content="Honda"/>
-                <ComboBoxItem Content="Nanatsumori"/>
-                <ComboBoxItem Content="Hiiragi"/>
-                <ComboBoxItem Content="Himuro"/>
-                <ComboBoxItem Content="Mikage"/>
-                <ComboBoxItem Content="Daichi"/>
-            </ComboBox>
+            <ComboBox Name="ComboApproachCharSelect" HorizontalAlignment="Stretch" />
             
             <Button Name="ButtonMaxAffectionSpecific" Classes="SaveBtn" Content="MAX GUY AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxAffectionSpecific_Click"/>
             
@@ -50,10 +41,7 @@
             
             <TextBlock Text="Specific Friend Affection" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             
-            <ComboBox Name="ComboFriendCharSelect" HorizontalAlignment="Stretch">
-                <ComboBoxItem Content="Michiru"/>
-                <ComboBoxItem Content="Hikaru"/>
-            </ComboBox>
+            <ComboBox Name="ComboFriendCharSelect" HorizontalAlignment="Stretch"/>
             
             <Button Name="ButtonMaxFriendAffectionSpecific" Classes="LoadBtn" Content="MAX FRIEND AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxFriendAffectionSpecific_Click"/>
 

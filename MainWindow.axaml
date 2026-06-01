@@ -45,6 +45,7 @@
           BorderThickness="1"
           CornerRadius="5"
           Background="White"
+          SelectionMode="Multiple"
           SelectionChanged="TreeView1_SelectionChanged"/>
 
         <Panel Name="PanelEditors" Grid.Row="1" Grid.Column="1" 
@@ -54,7 +55,7 @@
         <Image Name="PictureBoxCharacter"
                Grid.Row="1" Grid.Column="0"
                Classes="HoverJump"
-               Source="avares://TMGS4SaveEditor/Assets/character.png"
+               Source="avares://TMGS1SaveEditor/Assets/character.png"
                HorizontalAlignment="Left"
                VerticalAlignment="Bottom"
                Width="140" Height="140"
@@ -62,7 +63,7 @@
 
         <Image Name="PictureBoxLogo"
                Grid.Row="1" Grid.Column="1"
-               Source="avares://TMGS4SaveEditor/Assets/logo.png"
+               Source="avares://TMGS1SaveEditor/Assets/logo.png"
                HorizontalAlignment="Right"
                VerticalAlignment="Bottom"
                Width="200" Height="100" 

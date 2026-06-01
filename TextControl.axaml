@@ -4,8 +4,10 @@
     <StackPanel Spacing="5" Margin="10">
         <TextBlock Name="Label1" Foreground="{StaticResource BrushTextMain}" />
         <TextBox Name="TextBox1" 
-                 AcceptsReturn="True" 
-                 Height="280" 
+                 AcceptsReturn="False"
+                 MaxLines="1"
+                 Height="280"
+                 KeyDown="InputTextBox_KeyDown"
                  LostFocus="TextBox1_LostFocus" />
     </StackPanel>
 </UserControl>

@@ -171,6 +171,8 @@ namespace TMGSSaveEditor.Core
             if (o == null) return;
             Type t = o.GetType();
 
+            if (t.IsPrimitive || t == typeof(string) || t.IsEnum) return;
+
             // Grab the children collection attached to this parent
             ObservableCollection<TreeViewItem> childCollection = parent.ItemsSource as ObservableCollection<TreeViewItem>;
             if (childCollection == null)
@@ -237,7 +239,7 @@ namespace TMGSSaveEditor.Core
 
                     string name;
                     TreeViewItem node;
-                    if (itemType.BaseType == typeof(Enum) || itemType.Namespace != "GS4")
+                    if (itemType.IsPrimitive || itemType == typeof(string) || itemType.BaseType == typeof(Enum) || itemType.Namespace != "GS4")
                     {
                         string labelText = hideTypeName
                             ? String.Format("[{0}] {1}:", i, customSuffix)
@@ -284,7 +286,7 @@ namespace TMGSSaveEditor.Core
                 return;
             }
 
-            foreach (FieldInfo x in t.GetFields())
+            foreach (FieldInfo x in t.GetFields(BindingFlags.Public | BindingFlags.Instance))
             {
                 Type childType = x.FieldType;
                 Object childObject = x.GetValue(o);
@@ -310,11 +312,14 @@ namespace TMGSSaveEditor.Core
 
         private void TreeView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TreeView1.SelectedItem is not TreeViewItem node) return;
+            // If nothing is selected, do nothing
+            if (TreeView1.SelectedItems == null || TreeView1.SelectedItems.Count == 0) return;
+
+            // Base the right-side editor on the primary/first selected item
+            if (TreeView1.SelectedItems[0] is not TreeViewItem node) return;
 
             onReset?.Invoke();
 
-            // Prevent opening editors if this node has children/is an expandable category
             ObservableCollection<TreeViewItem> children = node.ItemsSource as ObservableCollection<TreeViewItem>;
             if (children != null && children.Count > 0 && children[0].Header?.ToString() != "loading")
             {
@@ -329,35 +334,99 @@ namespace TMGSSaveEditor.Core
 
         public void setObject(ObjectInfo objInfo, Object newObject)
         {
-            if (TreeView1.SelectedItem is not TreeViewItem selected) return;
+            if (TreeView1.SelectedItems == null || TreeView1.SelectedItems.Count == 0) return;
 
-            FieldInfo selectedFieldInfo = nodeToObjDict[selected].fieldInfo;
+            var selectedNodes = TreeView1.SelectedItems.Cast<TreeViewItem>().ToList();
 
-            if (objInfo.arrIndex != -1)
+            var signatures = selectedNodes.Select(node =>
             {
-                Array a = (Array)objInfo.parentObj;
-                a.SetValue(newObject, objInfo.arrIndex);
-            }
-            else
-            {
-                objInfo.fieldInfo.SetValue(objInfo.parentObj, newObject);
-            }
+                var info = nodeToObjDict[node];
+                return new { info.parentObj, info.fieldInfo, info.arrIndex };
+            }).ToList();
 
-            if (objInfo.treeNode.Parent is TreeViewItem parentNode)
-            {
-                processNode(parentNode);
-            }
+            HashSet<TreeViewItem> parentsToRefresh = new HashSet<TreeViewItem>();
 
-            var fieldInfos = (from x in nodeToObjDict where x.Value.fieldInfo == selectedFieldInfo && x.Value.arrIndex == nodeToObjDict[selected].arrIndex select x.Value).ToArray();
-
-            if (fieldInfos.Length > 0)
+            foreach (var node in selectedNodes)
             {
-                ObjectInfo updatedObjToEdit = fieldInfos.Last();
-                TreeView1.SelectedItem = updatedObjToEdit.treeNode;
-                TreeView1.Focus();
+                if (nodeToObjDict.TryGetValue(node, out ObjectInfo currentObjInfo))
+                {
+                    if (currentObjInfo.obj != null && currentObjInfo.obj.GetType() == newObject.GetType())
+                    {
+                        if (currentObjInfo.arrIndex != -1)
+                        {
+                            Array a = (Array)currentObjInfo.parentObj;
+                            a.SetValue(newObject, currentObjInfo.arrIndex);
+                        }
+                        else
+                        {
+                            currentObjInfo.fieldInfo.SetValue(currentObjInfo.parentObj, newObject);
+                        }
+
+                        currentObjInfo.obj = newObject;
+
+                        if (currentObjInfo.treeNode.Parent is TreeViewItem parentNode)
+                        {
+                            parentsToRefresh.Add(parentNode);
+                        }
+                    }
+                }
             }
 
             hasChanges = true;
+
+            // UNHOOK EVENT: Stop the TreeView from panicking while we rebuild the UI
+            TreeView1.SelectionChanged -= TreeView1_SelectionChanged;
+
+            foreach (var parent in parentsToRefresh)
+            {
+                if (parent.ItemsSource as ObservableCollection<TreeViewItem> is var oldChildren && oldChildren != null)
+                {
+                    foreach (var child in oldChildren)
+                    {
+                        nodeToObjDict.Remove(child);
+                    }
+                }
+                processNode(parent);
+            }
+
+            TreeView1.SelectedItems.Clear();
+            TreeViewItem primaryNodeToScrollTo = null;
+
+            foreach (var sig in signatures)
+            {
+                TreeViewItem match = null;
+
+                foreach (var parent in parentsToRefresh)
+                {
+                    if (parent.ItemsSource as ObservableCollection<TreeViewItem> is var newChildren && newChildren != null)
+                    {
+                        match = newChildren.FirstOrDefault(child =>
+                            nodeToObjDict.TryGetValue(child, out var info) &&
+                            info.parentObj == sig.parentObj &&
+                            info.fieldInfo == sig.fieldInfo &&
+                            info.arrIndex == sig.arrIndex);
+
+                        if (match != null) break;
+                    }
+                }
+
+                if (match != null)
+                {
+                    TreeView1.SelectedItems.Add(match);
+                    if (primaryNodeToScrollTo == null) primaryNodeToScrollTo = match;
+                }
+            }
+
+            // REHOOK EVENT: The tree is rebuilt, it is safe to listen to clicks again
+            TreeView1.SelectionChanged += TreeView1_SelectionChanged;
+
+            // Manually hand the fresh, newly generated node data directly to the TextControl
+            if (primaryNodeToScrollTo != null && nodeToObjDict.TryGetValue(primaryNodeToScrollTo, out var freshInfo))
+            {
+                onReset?.Invoke();
+                onHandleObject?.Invoke(freshInfo);
+                primaryNodeToScrollTo.BringIntoView();
+            }
         }
 
         private async void ButtonSave_Click(object sender, RoutedEventArgs e)
