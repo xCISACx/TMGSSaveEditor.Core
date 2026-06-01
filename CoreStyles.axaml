@@ -380,19 +380,19 @@
     <!--SCROLL BAR THUMB-->
 
     <Style Selector="ScrollBar:not(:pointerover) /template/ Track > Thumb /template/ Border">
-        <Setter Property="Background" Value="{StaticResource BrushSecondaryMain}" />
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFill}" />
     </Style>
 
     <Style Selector="ScrollBar:pointerover /template/ Track > Thumb /template/ Border">
-        <Setter Property="Background" Value="{StaticResource BrushSecondaryMain}" />
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFill}" />
     </Style>
 
     <Style Selector="ScrollBar /template/ Track > Thumb:pointerover /template/ Border">
-        <Setter Property="Background" Value="{StaticResource BrushSecondaryHover}" />
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFillPointerOver}" />
     </Style>
 
     <Style Selector="ScrollBar /template/ Track > Thumb:pressed /template/ Border">
-        <Setter Property="Background" Value="{StaticResource BrushSecondaryPressed}" />
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFillPressed}" />
     </Style>
 
         

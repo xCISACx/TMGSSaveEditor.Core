@@ -6,7 +6,7 @@
         <TextBox Name="TextBox1" 
                  AcceptsReturn="False"
                  MaxLines="1"
-                 Height="280"
+                 Height="50"
                  KeyDown="InputTextBox_KeyDown"
                  LostFocus="TextBox1_LostFocus" />
     </StackPanel>

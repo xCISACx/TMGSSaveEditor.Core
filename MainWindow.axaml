@@ -20,7 +20,7 @@
         </Style>
 
         <Style Selector="TreeViewItem">
-            <Setter Property="BorderBrush" Value="{StaticResource SaveButtonBackgroundMain}" /> 
+            <Setter Property="BorderBrush" Value="{StaticResource ColorBorderMain}" /> 
             <Setter Property="BorderThickness" Value="0,0,0,1" />
             <Setter Property="Padding" Value="4,6,4,6" />
             <Setter Property="Foreground" Value="{StaticResource BrushTextMain}" />
@@ -41,7 +41,7 @@
 
         <TreeView Name="TreeView1" Grid.Row="1" Grid.Column="0" 
           Margin="10,10,-30,130" 
-          BorderBrush="{StaticResource SaveButtonBackgroundPressed}"
+          BorderBrush="{StaticResource ColorBorderMain}"
           BorderThickness="1"
           CornerRadius="5"
           Background="White"
@@ -55,7 +55,6 @@
         <Image Name="PictureBoxCharacter"
                Grid.Row="1" Grid.Column="0"
                Classes="HoverJump"
-               Source="avares://TMGS1SaveEditor/Assets/character.png"
                HorizontalAlignment="Left"
                VerticalAlignment="Bottom"
                Width="140" Height="140"
@@ -63,7 +62,6 @@
 
         <Image Name="PictureBoxLogo"
                Grid.Row="1" Grid.Column="1"
-               Source="avares://TMGS1SaveEditor/Assets/logo.png"
                HorizontalAlignment="Right"
                VerticalAlignment="Bottom"
                Width="200" Height="100" 

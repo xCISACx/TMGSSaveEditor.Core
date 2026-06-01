@@ -25,6 +25,13 @@ namespace TMGSSaveEditor.Core
 
         private void Form_onHandleObject(MainWindow.ObjectInfo objInfo)
         {
+            if (objInfo.obj == null)
+            {
+                // Hide the editor panel since there is no data to edit
+                this.IsVisible = false;
+                return;
+            }
+
             Type objType = objInfo.obj.GetType();
             if (!objType.IsEnum)
             {

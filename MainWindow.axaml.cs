@@ -1,6 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using Avalonia.Platform.Storage;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Dto;
@@ -11,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using TMGSSaveEditor;
 
@@ -45,6 +48,8 @@ namespace TMGSSaveEditor.Core
 
         private CheatsWindow _cheatsWindowInstance;
 
+        private string _gameTitle;
+
         public interface ObjectInspector
         {
             void registerParent(MainWindow form);
@@ -65,9 +70,31 @@ namespace TMGSSaveEditor.Core
             this.Loaded += MainWindow_Loaded;
         }
 
-        public MainWindow(ISaveDataManager saveDataManager) : this()
+        public MainWindow(ISaveDataManager saveDataManager, string projectName, string windowTitle) : this()
         {
             _savedata = saveDataManager;
+
+            _gameTitle = windowTitle;
+
+            LoadGameAssets(projectName);
+        }
+
+        private void LoadGameAssets(string projectName)
+        {
+            if (string.IsNullOrEmpty(projectName)) return;
+
+            try
+            {
+                string charPath = $"avares://{projectName}/Assets/character.png";
+                string logoPath = $"avares://{projectName}/Assets/logo.png";
+
+                PictureBoxCharacter.Source = new Bitmap(AssetLoader.Open(new Uri(charPath)));
+                PictureBoxLogo.Source = new Bitmap(AssetLoader.Open(new Uri(logoPath)));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to load dynamic images: {ex.Message}");
+            }
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -453,9 +480,15 @@ namespace TMGSSaveEditor.Core
 
         private async void PictureBoxCharacter_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
         {
+            var dialog = new AboutDialog(_gameTitle);
+            await dialog.ShowDialog(this);
+        }
+
+        /*private async void PictureBoxCharacter_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
+        {
             var box = MessageBoxManager.GetMessageBoxStandard(new MessageBoxStandardParams
             {
-                ContentTitle = "TMGS 4 Save Editor",
+                ContentTitle = "TMGS 1 Save Editor",
                 ContentMessage = @"          --- Credits ---
 
 Programming:
@@ -464,17 +497,45 @@ Programming:
 
 Graphic Design:
     - euphonia.exe
+",
+                HyperLinkParams = new HyperLinkParams
+                {
+                    Text = "TMGS Fan Patch Discord",
+                    Action = new Action(() =>
+                    {
+                        var desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        var url = "https://discord.gg/Kw6mRY96hY";
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                        {
+                            //https://stackoverflow.com/a/2796367/241446
+                            using var proc = new Process { StartInfo = { UseShellExecute = true, FileName = url } };
+                            proc.Start();
 
-Discord: https://discord.gg/Kw6mRY96hY",
+                            return;
+                        }
+
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                        {
+                            Process.Start("x-www-browser", url);
+                            return;
+                        }
+
+                        if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                            throw new Exception("invalid url: " + url);
+                        Process.Start("open", url);
+                        return;
+                    })
+                },
+
                 ButtonDefinitions = ButtonEnum.Ok,
 
                 WindowStartupLocation = Avalonia.Controls.WindowStartupLocation.CenterOwner,
 
-                FontFamily = new FontFamily("avares://TMGS4SaveEditor/Assets/Fonts/DF-ChuButoMaruGothic-W7.ttf#DFMaruGothic-Bd")
+                FontFamily = new FontFamily("avares://TMGSSaveEditor.Core/Assets/Fonts/DF-ChuButoMaruGothic-W7.ttf#DFMaruGothic-Bd")
             });
 
             await box.ShowWindowDialogAsync(this);
-        }
+        }*/
 
         // Saves the header names from the root down to the selected item
         private List<string> GetSelectedNodePath()

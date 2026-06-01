@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TMGSSaveEditor.Core.AboutDialog"
+        Title="TMGS Save Editor"
+        Width="350" Height="300"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        FontFamily="avares://TMGSSaveEditor.Core/Assets/Fonts/DF-ChuButoMaruGothic-W7.ttf#DFMaruGothic-Bd">
+    
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
+        </Style>
+    </Window.Styles>
+
+    <StackPanel Margin="20" Spacing="0" HorizontalAlignment="Center">
+        
+        <TextBlock Name="AboutTitleTextBlock" Text="TMGS N Save Editor" FontSize="20" FontWeight="Bold" HorizontalAlignment="Stretch"/>
+        <TextBlock xml:space="preserve" HorizontalAlignment="Center">
+--- Credits ---
+
+Programming:
+    - PlasmaGrass
+    - CISAC
+
+Graphic Design:
+    - euphonia.exe
+        </TextBlock>
+        
+        <Button Content="TMGS Fan Patch Discord"
+                Click="OpenLink_Click"
+                Background="Transparent"
+                Foreground="#0066CC"
+                Cursor="Hand"
+                BorderThickness="0"
+                HorizontalAlignment="Center">
+            <Button.Styles>
+                <Style Selector="Button:pointerover /template/ ContentPresenter">
+                    <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#0066CC"/>
+                </Style>
+            </Button.Styles>
+        </Button>
+
+        <Button Content="OK" Classes="SaveBtn" Click="OnOkClick" HorizontalAlignment="Center" Width="80" HorizontalContentAlignment="Center" Margin="0,25,0,0"/>
+        
+    </StackPanel>
+</Window>
