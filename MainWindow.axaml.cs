@@ -76,6 +76,8 @@ namespace TMGSSaveEditor.Core
 
             _gameTitle = windowTitle;
 
+            this.Title = windowTitle;
+
             LoadGameAssets(projectName);
         }
 

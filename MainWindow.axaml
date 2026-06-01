@@ -1,7 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="TMGSSaveEditor.Core.MainWindow"
-        Title="TMGS 4 Save Editor"
+        Title="TMGS Save Editor"
         Width="1280" Height="800"
         WindowStartupLocation="CenterScreen">
 
