@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TMGSSaveEditor.Core.WarningDialog"
+        Title="Warning"
+        Width="450" Height="250"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False">
+
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Styles>
+    
+    <StackPanel Margin="0" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        <Image Name="PictureBoxLogo"
+               RenderOptions.BitmapInterpolationMode="HighQuality"
+               HorizontalAlignment="Center"
+               Width="100" Height="100" 
+               Margin="0,0,0,-30" />
+        
+        <TextBlock Name="MessageTextBlock"
+                   Text="Are you sure?"
+                   Margin="0,25,0,0"
+                   TextWrapping="Wrap" 
+                   TextAlignment="Center"
+                   HorizontalAlignment="Center" />
+        
+        <StackPanel Margin="5"  Spacing="20" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="YES" Classes="LoadBtn" Click="Yes_Click" Width="80" HorizontalContentAlignment="Center"/>
+            <Button Content="NO" Classes="SaveBtn" Click="No_Click" Width="80" HorizontalContentAlignment="Center"/>
+        </StackPanel>
+        
+    </StackPanel>
+</Window>

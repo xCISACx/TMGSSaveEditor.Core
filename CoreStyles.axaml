@@ -91,6 +91,16 @@
         <Setter Property="BorderThickness" Value="2" />
     </Style>
 
+    <Style Selector="TextBox">
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionBrush}"/>
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource BrushTextMain}"/>
+    </Style>
+
+    <Style Selector="SelectableTextBlock">
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionBrush}"/>
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource BrushTextMain}"/>
+    </Style>
+
     <!--COMBO BOX-->
 
     <Style Selector="ComboBox:pointerover /template/ ContentControl#ContentPresenter,

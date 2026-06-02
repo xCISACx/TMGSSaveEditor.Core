@@ -53,6 +53,8 @@
     <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="{DynamicResource ColorTextMain}"/>
     <SolidColorBrush x:Key="TextControlForegroundFocused" Color="{DynamicResource ColorTextMain}"/>
 
+    <SolidColorBrush x:Key="TextControlSelectionBrush" Color="{DynamicResource ArrowButtonMain}"/>
+
     <SolidColorBrush x:Key="TextControlBorderBrush" Color="{DynamicResource ColorBorderMain}"/>
     <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="{DynamicResource ColorBorderHover}"/>
     <SolidColorBrush x:Key="TextControlBorderBrushPressed" Color="{DynamicResource ColorBorderPressed}"/>
@@ -146,5 +148,46 @@
     <SolidColorBrush x:Key="ScrollBarTrackStrokePointerOver" Color="Transparent" />
 
     <SolidColorBrush x:Key="ScrollViewerScrollBarsSeparatorBackground" Color="Transparent" />
+
+    <Design.PreviewWith>
+        <Border Padding="20">
+
+            <StackPanel Spacing="10" Width="300">
+                
+                <TextBlock Text="Theme Preview Gallery" 
+                           Foreground="{DynamicResource BrushTextMain}" 
+                           FontSize="18" FontWeight="Bold" 
+                           HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                <Button Content="Sample Save Button" 
+                        Background="{DynamicResource SaveButtonBackgroundMain}" 
+                        Foreground="{DynamicResource BrushTextMain}" 
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+
+                <Button Content="Sample Load Button" 
+                        Background="{DynamicResource LoadButtonBackgroundMain}" 
+                        Foreground="{DynamicResource BrushTextMain}" 
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+
+                <Border Height="40" Background="{DynamicResource BrushControlBgHover}" CornerRadius="4">
+                    <TextBlock Text="Control Bg Hover Brush" 
+                               Foreground="{DynamicResource BrushTextMain}" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+
+                <StackPanel Spacing="5" Margin="10">
+
+                <TextBlock Name="Label1" Foreground="{DynamicResource BrushTextMain}" />
+                <TextBox Name="TextBox1"
+                         SelectionBrush="{DynamicResource TextControlSelectionBrush}"
+                         Text="Test"
+                         AcceptsReturn="False"
+                         MaxLines="1"
+                         Height="50"/>
+    </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
 
 </ResourceDictionary>

@@ -132,10 +132,15 @@ namespace TMGSSaveEditor.Core
         {
             if (hasChanges)
             {
-                // Requires MsBox.Avalonia NuGet package for MessageBox functionality, 
-                // or a custom dialog implementation.
-                // var result = await MessageBoxManager.GetMessageBoxStandard("Load anyway?", "File has been modified. Load anyway?", ButtonEnum.YesNo, Icon.Warning).ShowAsync();
-                // if (result != ButtonResult.Yes) return;
+                var dialog = new WarningDialog("Warning!", "Careful!\nThere are unsaved changes!\n\nLoad anyway?", _projectName);
+
+                // Await the modal dialog and capture the boolean result
+                bool shouldLoad = await dialog.ShowDialog<bool>(this);
+
+                if (!shouldLoad)
+                {
+                    return;
+                }
             }
 
             var topLevel = TopLevel.GetTopLevel(this);

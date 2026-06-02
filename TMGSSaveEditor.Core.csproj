@@ -20,6 +20,9 @@
     <Compile Update="AboutDialog.axaml.cs">
       <DependentUpon>AboutDialog.axaml</DependentUpon>
     </Compile>
+    <Compile Update="WarningDialog.axaml.cs">
+      <DependentUpon>WarningDialog.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
