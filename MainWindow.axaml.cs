@@ -49,6 +49,7 @@ namespace TMGSSaveEditor.Core
         private CheatsWindow _cheatsWindowInstance;
 
         private string _gameTitle;
+        private string _projectName;
 
         public interface ObjectInspector
         {
@@ -75,6 +76,8 @@ namespace TMGSSaveEditor.Core
             _savedata = saveDataManager;
 
             _gameTitle = windowTitle;
+
+            _projectName = projectName;
 
             this.Title = windowTitle;
 
@@ -257,8 +260,15 @@ namespace TMGSSaveEditor.Core
                         }
                         else if (objInfo.fieldInfo.Name.Equals("isPossessionDresses", StringComparison.OrdinalIgnoreCase))
                         {
-                            if (_savedata.ClothingNames != null && i < _savedata.ClothingNames.Length)
+                            if (_savedata.ClothingNames != null)
                             {
+                                // Instantly stop generating tree nodes if the save file array is 
+                                // longer than the actual amount of clothes in our JSON database.
+                                if (i >= _savedata.ClothingNames.Length)
+                                {
+                                    break;
+                                }
+
                                 // Remove the hyphen prefix so it looks clean
                                 customSuffix = _savedata.ClothingNames[i];
                                 hideTypeName = true;
@@ -482,7 +492,7 @@ namespace TMGSSaveEditor.Core
 
         private async void PictureBoxCharacter_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
         {
-            var dialog = new AboutDialog(_gameTitle);
+            var dialog = new AboutDialog(_gameTitle, _projectName);
             await dialog.ShowDialog(this);
         }
 
