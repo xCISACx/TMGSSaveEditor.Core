@@ -3,7 +3,7 @@
              x:Class="TMGSSaveEditor.Core.EnumControl">
     <StackPanel Spacing="5" Margin="10">
         
-        <TextBlock Name="Label1" Foreground="{StaticResource BrushTextMain}" />
+        <TextBlock Name="Label1" Foreground="{DynamicResource BrushTextMain}" />
         
         <ComboBox Name="ComboBox1" 
                   Width="170" 

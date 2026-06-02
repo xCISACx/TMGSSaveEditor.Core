@@ -8,11 +8,71 @@
 
     <Window.Styles>
         <Style Selector="Window">
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
         </Style>
 
         <Style Selector="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ColorAppTextOnBackground}"/>
+        </Style>
+
+        <Style Selector="Button.GenBtn">
+            <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
+            <Setter Property="FontSize" Value="18"/>
+        
+            <Setter Property="Foreground" Value="{DynamicResource ArrowButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource ArrowButtonMain}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style Selector="Button.GenBtn:pointerover /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource ArrowButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource ArrowButtonHover}"/>
+        </Style>
+
+        <Style Selector="Button.GenBtn:pressed /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource ArrowButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource ArrowButtonPressed}"/>
+        </Style>
+
+        <Style Selector="Button.GuyBtn">
+            <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
+            <Setter Property="FontSize" Value="18"/>
+        
+            <Setter Property="Foreground" Value="{DynamicResource AcceptButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource AcceptButtonMain}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AcceptButtonMain}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style Selector="Button.GuyBtn:pointerover /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource AcceptButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource AcceptButtonHover}"/>
+        </Style>
+
+        <Style Selector="Button.GuyBtn:pressed /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource AcceptButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource AcceptButtonPressed}"/>
+        </Style>
+
+        <Style Selector="Button.FriendBtn">
+            <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
+            <Setter Property="FontSize" Value="18"/>
+        
+            <Setter Property="Foreground" Value="{DynamicResource DismissButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource DismissButtonMain}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource DismissButtonMain}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style Selector="Button.FriendBtn:pointerover /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource DismissButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource DismissButtonHover}"/>
+        </Style>
+
+        <Style Selector="Button.FriendBtn:pressed /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource DismissButtonIcon}"/>
+            <Setter Property="Background" Value="{DynamicResource DismissButtonPressed}"/>
         </Style>
     </Window.Styles>
 
@@ -20,30 +80,30 @@
         <StackPanel Margin="20" Spacing="15">
             <TextBlock Text="CHEATS" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
             
-            <Button Name="ButtonUnlockAllClothes" Classes="SaveBtn" Content="UNLOCK ALL CLOTHES" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonUnlockAllClothes_Click"/>
-            <Button Name="ButtonMaxStats" Classes="SaveBtn" Content="MAX ALL STATS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxStats_Click"/>
-            <Button Name="ButtonMaxMoney" Classes="SaveBtn" Content="MAX MONEY" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxMoney_Click"/>
-            <Button Name="ButtonNoStress" Classes="SaveBtn" Content="NO STRESS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonNoStress_Click"/>
+            <Button Name="ButtonUnlockAllClothes" Classes="GenBtn" Content="UNLOCK ALL CLOTHES" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonUnlockAllClothes_Click"/>
+            <Button Name="ButtonMaxStats" Classes="GenBtn" Content="MAX ALL STATS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxStats_Click"/>
+            <Button Name="ButtonMaxMoney" Classes="GenBtn" Content="MAX MONEY" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxMoney_Click"/>
+            <Button Name="ButtonNoStress" Classes="GenBtn" Content="NO STRESS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonNoStress_Click"/>
             
-            <Separator Margin="0,10,0,10" Background="{StaticResource BrushTextMain}"/>
+            <Separator Margin="0,10,0,10" Background="{DynamicResource ArrowButtonIcon}"/>
 
-            <Button Name="ButtonMaxAffection" Classes="SaveBtn" Content="MAX ALL GUY AFFECTIONS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxAffection_Click"/>
+            <Button Name="ButtonMaxAffection" Classes="GuyBtn" Content="MAX ALL GUYS' AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxAffection_Click"/>
 
             <TextBlock Text="Specific Guy Affection" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             
             <ComboBox Name="ComboApproachCharSelect" HorizontalAlignment="Stretch" />
             
-            <Button Name="ButtonMaxAffectionSpecific" Classes="SaveBtn" Content="MAX GUY AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxAffectionSpecific_Click"/>
+            <Button Name="ButtonMaxAffectionSpecific" Classes="GuyBtn" Content="MAX GUY AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxAffectionSpecific_Click"/>
             
-            <Separator Margin="0,10,0,10" Background="{StaticResource BrushTextMain}"/>
+            <Separator Margin="0,10,0,10" Background="{DynamicResource ArrowButtonIcon}"/>
 
-            <Button Name="ButtonMaxFriendAffection" Classes="LoadBtn" Content="MAX ALL FRIEND AFFECTIONS" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxFriendAffection_Click"/>
+            <Button Name="ButtonMaxFriendAffection" Classes="FriendBtn" Content="MAX ALL FRIENDS' AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxFriendAffection_Click"/>
             
             <TextBlock Text="Specific Friend Affection" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             
             <ComboBox Name="ComboFriendCharSelect" HorizontalAlignment="Stretch"/>
             
-            <Button Name="ButtonMaxFriendAffectionSpecific" Classes="LoadBtn" Content="MAX FRIEND AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxFriendAffectionSpecific_Click"/>
+            <Button Name="ButtonMaxFriendAffectionSpecific" Classes="FriendBtn" Content="MAX FRIEND AFFECTION" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Click="ButtonMaxFriendAffectionSpecific_Click"/>
 
         </StackPanel>
     </ScrollViewer>

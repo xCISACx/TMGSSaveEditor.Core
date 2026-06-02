@@ -7,86 +7,86 @@
     </Styles.Resources>
 
     <Style Selector="Window">
-        <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
 
     <!--MESSAGE BOX BUTTON-->
 
     <Style Selector="Button#OkButton">
-        <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
         <Setter Property="FontSize" Value="18"/>
         
-        <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
-        <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource SaveButtonBackgroundMain}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundMain}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SaveButtonBackgroundMain}"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
 
     <Style Selector="Button#OkButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/>
-        <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundHover}"/>
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
     <Style Selector="Button#OkButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/>
-        <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundPressed}"/>
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
     <!--LOAD BUTTON-->
 
     <Style Selector="Button.LoadBtn">
-        <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
         <Setter Property="FontSize" Value="18"/>
 
-        <Setter Property="Background" Value="{StaticResource LoadButtonBackgroundMain}"/> 
-        <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource LoadButtonBackgroundMain}"/> 
+        <Setter Property="Foreground" Value="{DynamicResource BrushWhite}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
         <Setter Property="Padding" Value="15,8"/>
         <Setter Property="MinHeight" Value="36"/>
     </Style>
 
     <Style Selector="Button.LoadBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource LoadButtonBackgroundHover}"/> 
-        <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource LoadButtonBackgroundHover}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
     <Style Selector="Button.LoadBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource LoadButtonBackgroundPressed}"/> 
-        <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource LoadButtonBackgroundPressed}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
     <!--SAVE BUTTON-->
 
     <Style Selector="Button.SaveBtn">
-        <Setter Property="FontFamily" Value="{StaticResource ButtonFont}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
         <Setter Property="FontSize" Value="18"/>
 
-        <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundMain}"/> 
-        <Setter Property="Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundMain}"/> 
+        <Setter Property="Foreground" Value="{DynamicResource BrushWhite}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
         <Setter Property="Padding" Value="15,8"/>
         <Setter Property="MinHeight" Value="36"/>
     </Style>
 
     <Style Selector="Button.SaveBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundHover}"/> 
-        <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundHover}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
     <Style Selector="Button.SaveBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource SaveButtonBackgroundPressed}"/> 
-        <Setter Property="TextBlock.Foreground" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundPressed}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
     <!--TEXT BOX-->
 
     <Style Selector="TextBox">
-        <Setter Property="FontFamily" Value="{StaticResource MainTextFont}" />
+        <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}" />
     </Style>
 
     <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushSecondaryMain}" />
             
         <Setter Property="BorderThickness" Value="2" />
     </Style>
@@ -98,42 +98,42 @@
                         ComboBox:dropdownopen /template/ ContentControl#ContentPresenter,
                         ComboBox:focus /template/ ContentControl#ContentPresenter,
                         ComboBox:focus-within /template/ ContentControl#ContentPresenter">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
     </Style>
 
     <!--DATE PICKER-->
 
     <Style Selector="DatePicker">
-        <Setter Property="Background" Value="{StaticResource BrushWhite}"/>
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}"/>
+        <Setter Property="Background" Value="{DynamicResource BrushWhite}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushSecondaryMain}"/>
     </Style>
 
     <Style Selector="DatePicker:pointerover">
-        <Setter Property="Background" Value="{StaticResource BrushControlBgHover}"/>
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}"/>
+        <Setter Property="Background" Value="{DynamicResource BrushControlBgHover}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushSecondaryMain}"/>
     </Style>
 
     <Style Selector="DatePicker #PART_FlyoutButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource BrushControlBgPressed}"/>
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BrushSecondaryMain}"/>
+        <Setter Property="Background" Value="{DynamicResource BrushControlBgPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushSecondaryMain}"/>
     </Style>
 
     <Style Selector="DatePicker /template/ Button#PART_FlyoutButton TextBlock">
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
     </Style>
 
     <Style Selector="TextBlock#Label1">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
     </Style>
 
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton">
-        <Setter Property="Foreground" Value="{StaticResource BrushAcceptButtonIcon}" />
+        <Setter Property="Foreground" Value="{DynamicResource BrushAcceptButtonIcon}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Background="{TemplateBinding Background}">
@@ -150,7 +150,7 @@
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton">
-        <Setter Property="Foreground" Value="{StaticResource BrushDismissButtonIcon}" />
+        <Setter Property="Foreground" Value="{DynamicResource BrushDismissButtonIcon}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Background="{TemplateBinding Background}">
@@ -169,47 +169,47 @@
 
 
     <Style Selector="DatePickerPresenter #PART_MonthSelector ListBoxItem">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
 
     <Style Selector="DatePickerPresenter #PART_MonthSelector ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextDark}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter #PART_MonthSelector ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextDark}"/>
     </Style>
 
         
 
     <Style Selector="DatePickerPresenter #PART_DaySelector ListBoxItem">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
 
     <Style Selector="DatePickerPresenter #PART_DaySelector ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextDark}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter #PART_DaySelector ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextDark}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter #PART_YearSelector ListBoxItem">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-        <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
 
     <Style Selector="DatePickerPresenter #PART_YearSelector ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextDark}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter #PART_YearSelector ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{StaticResource BrushTextDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextDark}"/>
     </Style>
 
     <!--DATE PICKER UP DOWN BUTTONS-->
@@ -217,8 +217,8 @@
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton,
                         DatePickerPresenter /template/ RepeatButton#PART_DayUpButton,
                         DatePickerPresenter /template/ RepeatButton#PART_YearUpButton">
-        <Setter Property="Background" Value="{StaticResource BrushArrowButtonMain}" />
-        <Setter Property="Foreground" Value="{StaticResource BrushArrowButtonIcon}" />
+        <Setter Property="Background" Value="{DynamicResource BrushArrowButtonMain}" />
+        <Setter Property="Foreground" Value="{DynamicResource BrushArrowButtonIcon}" />
             
         <Setter Property="Template">
             <ControlTemplate>
@@ -238,8 +238,8 @@
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton,
                         DatePickerPresenter /template/ RepeatButton#PART_DayDownButton,
                         DatePickerPresenter /template/ RepeatButton#PART_YearDownButton">
-        <Setter Property="Background" Value="{StaticResource BrushArrowButtonMain}" />
-        <Setter Property="Foreground" Value="{StaticResource BrushArrowButtonIcon}" />
+        <Setter Property="Background" Value="{DynamicResource BrushArrowButtonMain}" />
+        <Setter Property="Foreground" Value="{DynamicResource BrushArrowButtonIcon}" />
             
         <Setter Property="Template">
             <ControlTemplate>
@@ -260,61 +260,61 @@
 
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:not(:ispointerover)">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthUpButton:pressed">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonPressed}"/>
     </Style>
 
 
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:not(:ispointerover)">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_MonthDownButton:pressed">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonPressed}"/>
     </Style>
 
 
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayUpButton:pressed">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonPressed}"/>
     </Style>
 
         
         
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_DayDownButton:pressed">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonPressed}"/>
     </Style>
 
 
@@ -322,29 +322,29 @@
       
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearUpButton:pressed">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonPressed}"/>
     </Style>
 
         
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ RepeatButton#PART_YearDownButton:pressed">
-        <Setter Property="Background" Value="{StaticResource ArrowButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ArrowButtonPressed}"/>
     </Style>
 
 
@@ -353,46 +353,46 @@
 
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton">
-        <Setter Property="Background" Value="{StaticResource AcceptButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource AcceptButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource AcceptButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource AcceptButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_AcceptButton:pressed">
-        <Setter Property="Background" Value="{StaticResource AcceptButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource AcceptButtonPressed}"/>
     </Style>
 
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton">
-        <Setter Property="Background" Value="{StaticResource DismissButtonMain}"/>
+        <Setter Property="Background" Value="{DynamicResource DismissButtonMain}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton:pointerover">
-        <Setter Property="Background" Value="{StaticResource DismissButtonHover}"/>
+        <Setter Property="Background" Value="{DynamicResource DismissButtonHover}"/>
     </Style>
 
     <Style Selector="DatePickerPresenter /template/ Button#PART_DismissButton:pressed">
-        <Setter Property="Background" Value="{StaticResource DismissButtonPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource DismissButtonPressed}"/>
     </Style>
 
     <!--SCROLL BAR THUMB-->
 
     <Style Selector="ScrollBar:not(:pointerover) /template/ Track > Thumb /template/ Border">
-        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFill}" />
+        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFill}" />
     </Style>
 
     <Style Selector="ScrollBar:pointerover /template/ Track > Thumb /template/ Border">
-        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFill}" />
+        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFill}" />
     </Style>
 
     <Style Selector="ScrollBar /template/ Track > Thumb:pointerover /template/ Border">
-        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFillPointerOver}" />
+        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFillPointerOver}" />
     </Style>
 
     <Style Selector="ScrollBar /template/ Track > Thumb:pressed /template/ Border">
-        <Setter Property="Background" Value="{StaticResource ScrollBarThumbFillPressed}" />
+        <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFillPressed}" />
     </Style>
 
         

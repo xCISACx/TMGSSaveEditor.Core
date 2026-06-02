@@ -2,52 +2,66 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="TMGSSaveEditor.Core.AboutDialog"
         Title="TMGS Save Editor"
-        Width="350" Height="300"
+        Width="350" Height="380"
         WindowStartupLocation="CenterOwner"
         CanResize="False"
         FontFamily="avares://TMGSSaveEditor.Core/Assets/Fonts/DF-ChuButoMaruGothic-W7.ttf#DFMaruGothic-Bd">
     
     <Window.Styles>
         <Style Selector="Window">
-            <Setter Property="FontFamily" Value="{StaticResource MainTextFont}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource MainTextFont}"/>
         </Style>
 
         <Style Selector="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
+            <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}"/>
         </Style>
     </Window.Styles>
 
-    <StackPanel Margin="20" Spacing="0" HorizontalAlignment="Center">
+    <StackPanel Margin="5" Spacing="0" HorizontalAlignment="Center">
+
+        <Image Name="PictureBoxLogo"
+               RenderOptions.BitmapInterpolationMode="HighQuality"
+               HorizontalAlignment="Center"
+               Width="200" Height="84" 
+               Margin="-20,0,0,0" />
         
-        <TextBlock Name="AboutTitleTextBlock" Text="TMGS N Save Editor" FontSize="20" FontWeight="Bold" HorizontalAlignment="Stretch"/>
-        <TextBlock xml:space="preserve" HorizontalAlignment="Center">
---- Credits ---
+        <TextBlock Name="AboutTitleTextBlock" HorizontalAlignment="Center" Text="Save Editor" FontSize="20" FontWeight="Bold"/>
+        
+        <TextBlock HorizontalAlignment="Center" Margin="10" FontWeight="Bold">★ Credits ★</TextBlock>
 
-Programming:
-    - PlasmaGrass
-    - CISAC
+        <TextBlock HorizontalAlignment="Center" Margin="10" TextDecorations="Underline">Programming</TextBlock>
 
-Graphic Design:
-    - euphonia.exe
-        </TextBlock>
+        <TextBlock HorizontalAlignment="Center">PlasmaGrass</TextBlock>
+        <TextBlock HorizontalAlignment="Center">CISAC</TextBlock>
+
+        <TextBlock HorizontalAlignment="Center" Margin="10" TextDecorations="Underline">Graphic Design</TextBlock>
+
+        <TextBlock HorizontalAlignment="Center">euphonia.exe</TextBlock>
         
         <Button Content="TMGS Fan Patch Discord"
+                FontWeight="Bold"
+                Margin="10"
                 Click="OpenLink_Click"
                 Background="Transparent"
-                Foreground="#0066CC"
+                Foreground="{DynamicResource ColorLink}"
                 Cursor="Hand"
                 BorderThickness="0"
                 HorizontalAlignment="Center">
             <Button.Styles>
+                <Style Selector="Button /template/ ContentPresenter">
+                    <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ColorLink}"/>
+                </Style>
                 <Style Selector="Button:pointerover /template/ ContentPresenter">
                     <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
                     <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="#0066CC"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ColorLink}"/>
                 </Style>
             </Button.Styles>
         </Button>
 
-        <Button Content="OK" Classes="SaveBtn" Click="OnOkClick" HorizontalAlignment="Center" Width="80" HorizontalContentAlignment="Center" Margin="0,25,0,0"/>
+        <Button Content="OK" Classes="SaveBtn" Click="OnOkClick" HorizontalAlignment="Center" Width="80" HorizontalContentAlignment="Center" Margin="0,10,0,0"/>
         
     </StackPanel>
 </Window>

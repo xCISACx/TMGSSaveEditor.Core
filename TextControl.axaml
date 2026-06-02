@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="TMGSSaveEditor.Core.TextControl">
     <StackPanel Spacing="5" Margin="10">
-        <TextBlock Name="Label1" Foreground="{StaticResource BrushTextMain}" />
+        <TextBlock Name="Label1" Foreground="{DynamicResource BrushTextMain}" />
         <TextBox Name="TextBox1" 
                  AcceptsReturn="False"
                  MaxLines="1"

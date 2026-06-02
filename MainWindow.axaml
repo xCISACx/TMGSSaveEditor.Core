@@ -20,10 +20,10 @@
         </Style>
 
         <Style Selector="TreeViewItem">
-            <Setter Property="BorderBrush" Value="{StaticResource ColorBorderMain}" /> 
+            <Setter Property="BorderBrush" Value="{DynamicResource ColorBorderMain}" /> 
             <Setter Property="BorderThickness" Value="0,0,0,1" />
             <Setter Property="Padding" Value="4,6,4,6" />
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}" />
+            <Setter Property="Foreground" Value="{DynamicResource BrushTextMain}" />
         </Style>
     </Window.Styles>
 
@@ -41,7 +41,7 @@
 
         <TreeView Name="TreeView1" Grid.Row="1" Grid.Column="0" 
           Margin="10,10,-30,130" 
-          BorderBrush="{StaticResource ColorBorderMain}"
+          BorderBrush="{DynamicResource ColorBorderMain}"
           BorderThickness="1"
           CornerRadius="5"
           Background="White"
@@ -53,6 +53,7 @@
        Background="Transparent"/>
 
         <Image Name="PictureBoxCharacter"
+               RenderOptions.BitmapInterpolationMode="HighQuality"
                Grid.Row="1" Grid.Column="0"
                Classes="HoverJump"
                HorizontalAlignment="Left"
@@ -61,10 +62,11 @@
                PointerPressed="PictureBoxCharacter_PointerPressed" />
 
         <Image Name="PictureBoxLogo"
+               RenderOptions.BitmapInterpolationMode="HighQuality"
                Grid.Row="1" Grid.Column="1"
                HorizontalAlignment="Right"
                VerticalAlignment="Bottom"
-               Width="200" Height="100" 
+               Width="200" Height="84" 
                Margin="0,0,10,10" />
     </Grid>
 </Window>
