@@ -133,7 +133,7 @@ namespace TMGSSaveEditor.Core
 
                 if (paramsArr != null && paramsArr.Length > 7)
                 {
-                    paramsArr[7] = 9000; // MONEY
+                    paramsArr[7] = 9800; // MONEY
                     _mainWindow.MarkAsChangedAndRefresh();
                 }
             }
@@ -180,9 +180,11 @@ namespace TMGSSaveEditor.Core
             FieldInfo lovePointField = charType.GetField("lovePoint", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
             FieldInfo friendPointField = charType.GetField("friendPoint", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
             FieldInfo emotionStateField = charType.GetField("emotionState", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo intimatePointField= charType.GetField("intimatePoint", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
-            if (lovePointField != null) lovePointField.SetValue(character, 300);
-            if (friendPointField != null) friendPointField.SetValue(character, 300);
+            if (lovePointField != null) lovePointField.SetValue(character, 255);
+            if (friendPointField != null) friendPointField.SetValue(character, 255);
+            if (intimatePointField != null) intimatePointField.SetValue(character, 400);
 
             if (emotionStateField != null)
             {

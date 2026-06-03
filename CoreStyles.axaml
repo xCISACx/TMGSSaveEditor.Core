@@ -1,7 +1,240 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <Design.PreviewWith>
+            <Border Padding="20">
+                <ScrollViewer Height="600">
+                <StackPanel Spacing="10" Width="300">
+                    
+                    <TextBlock Text="Theme Preview Gallery" 
+                               Foreground="{DynamicResource BrushTextMain}" 
+                               FontSize="18" FontWeight="Bold" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+    
+                    <Button Classes="SaveBtn" Content="SAVE FILE" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Button Classes="LoadBtn" Content="LOAD FILE" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Button Classes="OkBtn" Content="OK" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Button Classes="GenBtn" Content="GEN CHEAT BUTTON" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                    <Button Classes="GuyBtn" Content="GUY CHEAT BUTTON" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                    <Button Classes="FriendBtn" Content="FRIEND CHEAT BUTTON" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+    
+                    <!-- TextControl Preview -->
+                    <StackPanel Spacing="5" Margin="10">
+                        <TextBlock Text="TextControl Label" Foreground="{DynamicResource BrushTextMain}" />
+                        <TextBox SelectionForegroundBrush="{DynamicResource TextControlSelectionTextBrush}"
+                                 SelectionBrush="{DynamicResource TextControlSelectionBrush}"
+                                 Text="TextControl Value"
+                                 AcceptsReturn="False"
+                                 MaxLines="1"
+                                 Height="50"/>
+                    </StackPanel>
+    
+                    <!-- BooleanControl Preview -->
+                    <StackPanel Spacing="5" Margin="10">
+                        <CheckBox Content="BooleanControl Unchecked" Margin="10" />
+                        <CheckBox Content="BooleanControl Checked" IsChecked="True" Margin="10" />
+                    </StackPanel>
+    
+                    <!-- EnumControl Preview -->
+                    <StackPanel Spacing="5" Margin="10">
+                        <TextBlock Text="EnumControl Label" Foreground="{DynamicResource BrushTextMain}" />
+                        <ComboBox Width="170" SelectedIndex="0">
+                            <ComboBoxItem>Option 1</ComboBoxItem>
+                            <ComboBoxItem>Option 2</ComboBoxItem>
+                            <ComboBoxItem>Option 3</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+    
+                    <!-- DateControl Preview -->
+                    <StackPanel Spacing="5" Margin="10">
+                        <TextBlock Text="DateControl Label" Foreground="{DynamicResource BrushTextMain}" />
+                        <DatePicker Height="30"/>
+                    </StackPanel>
+    
+                </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Design.PreviewWith>
+
     <Styles.Resources>
+        <SolidColorBrush x:Key="SaveButtonBackgroundMain" Color="{DynamicResource ColorSaveMain}"/>
+        <SolidColorBrush x:Key="SaveButtonBackgroundHover" Color="{DynamicResource ColorSaveHover}"/>
+        <SolidColorBrush x:Key="SaveButtonBackgroundPressed" Color="{DynamicResource ColorSavePressed}"/>
+
+        <SolidColorBrush x:Key="LoadButtonBackgroundMain" Color="{DynamicResource ColorLoadMain}"/>
+        <SolidColorBrush x:Key="LoadButtonBackgroundHover" Color="{DynamicResource ColorLoadHover}"/>
+        <SolidColorBrush x:Key="LoadButtonBackgroundPressed" Color="{DynamicResource ColorLoadPressed}"/>
+
+        <SolidColorBrush x:Key="OkButtonBackgroundMain" Color="{DynamicResource OkButtonMain}"/>
+        <SolidColorBrush x:Key="OkButtonBackgroundHover" Color="{DynamicResource OkButtonHover}"/>
+        <SolidColorBrush x:Key="OkButtonBackgroundPressed" Color="{DynamicResource OkButtonPressed}"/>
+
+        <SolidColorBrush x:Key="BrushTextMain" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="BrushTextDark" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="BrushWhite" Color="{DynamicResource ColorWhite}"/>
+
+        <SolidColorBrush x:Key="BrushControlBgHover" Color="{DynamicResource ColorControlBgHover}"/>
+        <SolidColorBrush x:Key="BrushControlBgPressed" Color="{DynamicResource ColorControlBgPressed}"/>
+        <SolidColorBrush x:Key="BrushControlBorderMain" Color="{DynamicResource ColorControlBorderMain}"/>
+        <SolidColorBrush x:Key="BrushControlBorderHover" Color="{DynamicResource ColorControlBorderHover}"/>
+        <SolidColorBrush x:Key="BrushControlBorderPressed" Color="{DynamicResource ColorControlBorderPressed}"/>
+
+        <SolidColorBrush x:Key="BrushSecondaryMain" Color="{DynamicResource ColorSecondaryMain}"/>
+        <SolidColorBrush x:Key="BrushSecondaryHover" Color="{DynamicResource ColorSecondaryHover}"/>
+        <SolidColorBrush x:Key="BrushSecondaryPressed" Color="{DynamicResource ColorSecondaryPressed}"/>
+
+        <SolidColorBrush x:Key="BrushPrimaryMain" Color="{DynamicResource ColorPrimaryMain}"/>
+        <SolidColorBrush x:Key="BrushPrimaryHover" Color="{DynamicResource ColorPrimaryHover}"/>
+        <SolidColorBrush x:Key="BrushPrimaryPressed" Color="{DynamicResource ColorPrimaryPressed}"/>
+
+        <SolidColorBrush x:Key="BrushArrowButtonMain" Color="{DynamicResource ArrowButtonMain}"/>
+        <SolidColorBrush x:Key="BrushArrowButtonHover" Color="{DynamicResource ArrowButtonHover}"/>
+        <SolidColorBrush x:Key="BrushArrowButtonPressed" Color="{DynamicResource ArrowButtonPressed}"/>
+        <SolidColorBrush x:Key="BrushArrowButtonIcon" Color="{DynamicResource ArrowButtonIcon}"/>
+
+        <SolidColorBrush x:Key="BrushAcceptButtonMain" Color="{DynamicResource AcceptButtonMain}"/>
+        <SolidColorBrush x:Key="BrushAcceptButtonHover" Color="{DynamicResource AcceptButtonHover}"/>
+        <SolidColorBrush x:Key="BrushAcceptButtonPressed" Color="{DynamicResource AcceptButtonPressed}"/>
+        <SolidColorBrush x:Key="BrushAcceptButtonIcon" Color="{DynamicResource AcceptButtonIcon}"/>
+
+        <SolidColorBrush x:Key="BrushDismissButtonMain" Color="{DynamicResource DismissButtonMain}"/>
+        <SolidColorBrush x:Key="BrushDismissButtonHover" Color="{DynamicResource DismissButtonHover}"/>
+        <SolidColorBrush x:Key="BrushDismissButtonPressed" Color="{DynamicResource DismissButtonPressed}"/>
+        <SolidColorBrush x:Key="BrushDismissButtonIcon" Color="{DynamicResource DismissButtonIcon}"/>
+
+        <SolidColorBrush x:Key="BrushGenCheatButtonText" Color="{DynamicResource GenCheatButtonText}"/>
+        <SolidColorBrush x:Key="BrushGenCheatButtonMain" Color="{DynamicResource GenCheatButtonMain}"/>
+        <SolidColorBrush x:Key="BrushGenCheatButtonHover" Color="{DynamicResource GenCheatButtonHover}"/>
+        <SolidColorBrush x:Key="BrushGenCheatButtonPressed" Color="{DynamicResource GenCheatButtonPressed}"/>
+
+        <SolidColorBrush x:Key="BrushGuyCheatButtonText" Color="{DynamicResource GuyCheatButtonText}"/>
+        <SolidColorBrush x:Key="BrushGuyCheatButtonMain" Color="{DynamicResource GuyCheatButtonMain}"/>
+        <SolidColorBrush x:Key="BrushGuyCheatButtonHover" Color="{DynamicResource GuyCheatButtonHover}"/>
+        <SolidColorBrush x:Key="BrushGuyCheatButtonPressed" Color="{DynamicResource GuyCheatButtonPressed}"/>
+
+        <SolidColorBrush x:Key="BrushFriendCheatButtonText" Color="{DynamicResource FriendCheatButtonText}"/>
+        <SolidColorBrush x:Key="BrushFriendCheatButtonMain" Color="{DynamicResource FriendCheatButtonMain}"/>
+        <SolidColorBrush x:Key="BrushFriendCheatButtonHover" Color="{DynamicResource FriendCheatButtonHover}"/>
+        <SolidColorBrush x:Key="BrushFriendCheatButtonPressed" Color="{DynamicResource FriendCheatButtonPressed}"/>
+
+
+        <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
+
+        <SolidColorBrush x:Key="ThemeTextColor" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="SystemRegionBrush" Color="{DynamicResource ColorAppBackground}"/>
+
+        <SolidColorBrush x:Key="TreeViewItemBackgroundPointerOver" Color="{DynamicResource ColorHighlightHover}"/>
+        <SolidColorBrush x:Key="TreeViewItemBackgroundSelected" Color="{DynamicResource ColorHighlightSelected}"/>
+        <SolidColorBrush x:Key="TreeViewItemBackgroundSelectedPointerOver" Color="{DynamicResource ColorHighlightSelectedHover}"/>
+        <SolidColorBrush x:Key="TreeViewItemForeground" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="TreeViewItemForegroundPointerOver" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="TreeViewItemForegroundPressed" Color="{DynamicResource ColorTextDark}"/>
+
+        <SolidColorBrush x:Key="TextControlBackground" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="{DynamicResource ColorControlBgHover}"/>
+        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="TextControlForeground" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="TextControlForegroundFocused" Color="{DynamicResource ColorTextMain}"/>
+
+        <SolidColorBrush x:Key="TextControlSelectionBrush" Color="{DynamicResource ColorTextSelectionBackground}"/>
+        <SolidColorBrush x:Key="TextControlSelectionTextBrush" Color="{DynamicResource ColorTextSelectionForeground}"/>
+
+        <SolidColorBrush x:Key="TextControlBorderBrush" Color="{DynamicResource ColorBorderMain}"/>
+        <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="{DynamicResource ColorBorderHover}"/>
+        <SolidColorBrush x:Key="TextControlBorderBrushPressed" Color="{DynamicResource ColorBorderPressed}"/>
+        <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="{DynamicResource ColorBorderPressed}"/>
+
+        <SolidColorBrush x:Key="CheckBoxForeground" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundPointerOver" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundPressed" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundChecked" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundCheckedPointerOver" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundCheckedPressed" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPointerOver" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="CheckBoxForegroundUncheckedPressed" Color="{DynamicResource ColorTextMain}"/>
+
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUnchecked" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPointerOver" Color="{DynamicResource ColorControlBgHover}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillUncheckedPressed" Color="{DynamicResource ColorControlBgPressed}"/>
+
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUnchecked" Color="{DynamicResource ColorControlBorderMain}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" Color="{DynamicResource ColorControlBorderHover}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" Color="{DynamicResource ColorControlBorderPressed}"/>
+
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="{DynamicResource ColorSecondaryMain}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="{DynamicResource ColorSecondaryHover}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="{DynamicResource ColorSecondaryPressed}"/>
+
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeChecked" Color="{DynamicResource ColorSecondaryMain}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="{DynamicResource ColorSecondaryHover}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="{DynamicResource ColorSecondaryPressed}"/>
+
+        <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundChecked" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="{DynamicResource ColorWhite}"/>
+        
+        <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground" Color="{DynamicResource ColorTextMain}"/>
+
+        <SolidColorBrush x:Key="ComboBoxBackground" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="{DynamicResource ColorControlBgHover}"/>
+        <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="{DynamicResource ColorControlBgPressed}"/>
+
+        <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="{DynamicResource ColorBorderMain}"/>
+        <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="{DynamicResource ColorBorderHover}"/>
+        <SolidColorBrush x:Key="ComboBoxBorderBrushPressed" Color="{DynamicResource ColorBorderPressed}"/>
+
+        <SolidColorBrush x:Key="ComboBoxForeground" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="ComboBoxForegroundPointerOver" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxForegroundSelected" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxForegroundSelectedPointerOver" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxForegroundPressed" Color="{DynamicResource ColorTextDark}"/>
+
+        <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush" Color="{DynamicResource ColorBorderMain}"/>
+
+        <SolidColorBrush x:Key="ComboBoxDropDownForeground" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="ComboBoxDropDownForegroundPointerOver" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxDropDownForegroundSelected" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxDropDownForegroundSelectedPointerOver" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxDropDownForegroundPressed" Color="{DynamicResource ColorTextDark}"/>
+
+        <SolidColorBrush x:Key="ComboBoxItemForeground" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="ComboBoxItemForegroundPointerOver" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxItemForegroundSelected" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedPointerOver" Color="{DynamicResource ColorTextDark}"/>
+        <SolidColorBrush x:Key="ComboBoxItemForegroundPressed" Color="{DynamicResource ColorTextDark}"/>
+
+        <SolidColorBrush x:Key="ComboBoxItemBackgroundPointerOver" Color="{DynamicResource ColorHighlightHover}"/>
+        <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="{DynamicResource ColorHighlightSelected}"/>
+        <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPointerOver" Color="{DynamicResource ColorHighlightSelectedHover}"/>
+
+        <SolidColorBrush x:Key="DatePickerSpacerFill" Color="{DynamicResource ColorSecondaryMain}"/>
+        <SolidColorBrush x:Key="DatePickerFlyoutPresenterSpacerFill" Color="{DynamicResource ColorSecondaryMain}"/>
+        <SolidColorBrush x:Key="DatePickerFlyoutPresenterBackground" Color="{DynamicResource ColorWhite}"/>
+        <SolidColorBrush x:Key="DatePickerFlyoutPresenterForeground" Color="{DynamicResource ColorTextMain}"/>
+        <SolidColorBrush x:Key="DatePickerFlyoutPresenterBorderBrush" Color="{DynamicResource ColorSecondaryPressed}"/>
+
+        <SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{DynamicResource DatePickerHighlight}"/>
+
+        <SolidColorBrush x:Key="ScrollBarPanningThumbBackground" Color="{DynamicResource ColorBorderMain}"/>
+
+        <SolidColorBrush x:Key="ScrollBarThumbFill" Color="{DynamicResource ColorBorderMain}" />
+        <SolidColorBrush x:Key="ScrollBarThumbFillPointerOver" Color="{DynamicResource ColorBorderHover}" />
+        <SolidColorBrush x:Key="ScrollBarThumbFillPressed" Color="{DynamicResource ColorBorderPressed}" />
+
+        <SolidColorBrush x:Key="ScrollBarsSeparatorBackground" Color="#40FFFFFF" />
+
+        <SolidColorBrush x:Key="ScrollBarTrackFill" Color="#40FFFFFF" />
+        <SolidColorBrush x:Key="ScrollBarTrackFillPointerOver" Color="#40FFFFFF" />
+        <SolidColorBrush x:Key="ScrollBarTrackFillPressed" Color="#40FFFFFF" />
+
+        <SolidColorBrush x:Key="ScrollBarTrackStroke" Color="Transparent" />
+        <SolidColorBrush x:Key="ScrollBarTrackStrokePointerOver" Color="Transparent" />
+
+        <SolidColorBrush x:Key="ScrollViewerScrollBarsSeparatorBackground" Color="Transparent" />
+        
         <FontFamily x:Key="MainTextFont">avares://TMGSSaveEditor.Core/Assets/Fonts/DF-ChuButoMaruGothic-W7.ttf#DFMaruGothic-Bd</FontFamily>
         <FontFamily x:Key="ButtonFont">avares://TMGSSaveEditor.Core/Assets/Fonts/DF-FutoMaruGothic-W9.ttf#DFMaruGothic-SB</FontFamily>
     </Styles.Resources>
@@ -13,23 +246,23 @@
 
     <!--MESSAGE BOX BUTTON-->
 
-    <Style Selector="Button#OkButton">
+    <Style Selector="Button.OkBtn">
         <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
         <Setter Property="FontSize" Value="18"/>
         
         <Setter Property="Foreground" Value="{DynamicResource BrushWhite}"/>
-        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundMain}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource SaveButtonBackgroundMain}"/>
+        <Setter Property="Background" Value="{DynamicResource OkButtonBackgroundMain}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource OkButtonBackgroundMain}"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
 
-    <Style Selector="Button#OkButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundHover}"/>
+    <Style Selector="Button.OkBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource OkButtonBackgroundHover}"/>
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
-    <Style Selector="Button#OkButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource SaveButtonBackgroundPressed}"/>
+    <Style Selector="Button.OkBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource OkButtonBackgroundPressed}"/>
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
@@ -79,6 +312,100 @@
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushWhite}"/>
     </Style>
 
+    <!--GEN CHEAT BUTTON-->
+
+    <Style Selector="Button.GenBtn">
+        <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
+        <Setter Property="FontSize" Value="18"/>
+
+        <Setter Property="Background" Value="{DynamicResource BrushGenCheatButtonMain}"/> 
+        <Setter Property="Foreground" Value="{DynamicResource BrushGenCheatButtonText}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+        <Setter Property="Padding" Value="15,8"/>
+        <Setter Property="MinHeight" Value="36"/>
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.GenBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BrushGenCheatButtonHover}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushGenCheatButtonText}"/>
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.GenBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BrushGenCheatButtonPressed}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushGenCheatButtonText}"/>
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <!--GUY CHEAT BUTTON-->
+
+    <Style Selector="Button.GuyBtn">
+        <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
+        <Setter Property="FontSize" Value="18"/>
+
+        <Setter Property="Background" Value="{DynamicResource BrushGuyCheatButtonMain}"/> 
+        <Setter Property="Foreground" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+        <Setter Property="Padding" Value="15,8"/>
+        <Setter Property="MinHeight" Value="36"/>
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.GuyBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BrushGuyCheatButtonHover}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.GuyBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BrushGuyCheatButtonPressed}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <!--FRIEND CHEAT BUTTON-->
+
+    <Style Selector="Button.FriendBtn">
+        <Setter Property="FontFamily" Value="{DynamicResource ButtonFont}"/>
+        <Setter Property="FontSize" Value="18"/>
+
+        <Setter Property="Background" Value="{DynamicResource BrushFriendCheatButtonMain}"/> 
+        <Setter Property="Foreground" Value="{DynamicResource BrushFriendCheatButtonText}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+        <Setter Property="Padding" Value="15,8"/>
+        <Setter Property="MinHeight" Value="36"/>
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.FriendBtn:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BrushFriendCheatButtonHover}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushFriendCheatButtonText}"/>
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.FriendBtn:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BrushFriendCheatButtonPressed}"/> 
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BrushFriendCheatButtonText}"/>
+        
+        <Setter Property="BorderBrush" Value="{DynamicResource BrushGuyCheatButtonText}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    
     <!--TEXT BOX-->
 
     <Style Selector="TextBox">
@@ -86,19 +413,19 @@
     </Style>
 
     <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="{DynamicResource BrushSecondaryMain}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ColorBorderMain}" />
             
         <Setter Property="BorderThickness" Value="2" />
     </Style>
 
     <Style Selector="TextBox">
         <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionBrush}"/>
-        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource ColorTextSelectionForeground}"/>
     </Style>
 
     <Style Selector="SelectableTextBlock">
         <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionBrush}"/>
-        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource BrushTextMain}"/>
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource ColorTextSelectionForeground}"/>
     </Style>
 
     <!--COMBO BOX-->
@@ -404,7 +731,4 @@
     <Style Selector="ScrollBar /template/ Track > Thumb:pressed /template/ Border">
         <Setter Property="Background" Value="{DynamicResource ScrollBarThumbFillPressed}" />
     </Style>
-
-        
-
 </Styles>
