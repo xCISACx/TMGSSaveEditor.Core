@@ -66,6 +66,7 @@ namespace TMGSSaveEditor.Core
         public MainWindow()
         {
             InitializeComponent();
+            SetDynamicIcon();
             TreeView1.ItemsSource = treeItems;
             TreeView1.AddHandler(TreeViewItem.ExpandedEvent, TreeViewItem_Expanded);
             this.Loaded += MainWindow_Loaded;
@@ -82,6 +83,22 @@ namespace TMGSSaveEditor.Core
             this.Title = windowTitle;
 
             LoadGameAssets(projectName);
+        }
+        
+        private void SetDynamicIcon()
+        {
+            string appName = Assembly.GetEntryAssembly()?.GetName().Name;
+            
+            string iconName = "icon1.ico"; 
+            if (appName != null)
+            {
+                if (appName.Contains("2")) iconName = "icon2.ico";
+                else if (appName.Contains("3")) iconName = "icon3.ico";
+                else if (appName.Contains("4")) iconName = "icon4.ico";
+            }
+            
+            var iconUri = new Uri($"avares://{appName}/Assets/{iconName}");
+            this.Icon = new WindowIcon(AssetLoader.Open(iconUri));
         }
 
         private void LoadGameAssets(string projectName)
