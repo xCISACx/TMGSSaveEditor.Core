@@ -24,6 +24,7 @@ namespace TMGSSaveEditor.Core
         public Object data;
 
         internal ISaveDataManager _savedata;
+        private Dictionary<Tuple<string, string>, Type?> _fieldToEnumMap;
 
         bool hasLoaded => data != null;
         bool hasChanges;
@@ -75,14 +76,41 @@ namespace TMGSSaveEditor.Core
         public MainWindow(ISaveDataManager saveDataManager, string projectName, string windowTitle) : this()
         {
             _savedata = saveDataManager;
-
             _gameTitle = windowTitle;
-
             _projectName = projectName;
-
             this.Title = windowTitle;
 
+            InitializeFieldToEnumMap();
             LoadGameAssets(projectName);
+        }
+
+        private void InitializeFieldToEnumMap()
+        {
+            var saveDataManagerType = _savedata.GetType();
+            _fieldToEnumMap = new Dictionary<Tuple<string, string>, Type?>
+            {
+                { new Tuple<string, string>("player", "playerFlags"), saveDataManagerType.GetNestedType("PlayerFlag") },
+                { new Tuple<string, string>("ApproachCharSaveData", "commonFlags"), saveDataManagerType.GetNestedType("CharFlag") },
+                { new Tuple<string, string>("ApproachCharSaveData", "commonCounters"), saveDataManagerType.GetNestedType("CharCounter") },
+                { new Tuple<string, string>("ApproachCharSaveData", "hearSelectCounts"), saveDataManagerType.GetNestedType("DateTopicBoy") },
+                { new Tuple<string, string>("FriendCharSaveData", "commonFlags"), saveDataManagerType.GetNestedType("CharFlag") },
+                { new Tuple<string, string>("FriendCharSaveData", "commonCounters"), saveDataManagerType.GetNestedType("CharCounter") },
+                { new Tuple<string, string>("AdvCharSaveData", "commonFlags"), saveDataManagerType.GetNestedType("CharFlag") },
+                { new Tuple<string, string>("AdvCharSaveData", "commonCounters"), saveDataManagerType.GetNestedType("CharCounter") },
+                { new Tuple<string, string>("SystemSaveData", "isOpenEndings"), saveDataManagerType.GetNestedType("EndingId") },
+                { new Tuple<string, string>("player", "oneYearCommandCounts"), saveDataManagerType.GetNestedType("OneYearCommandType") },
+                { new Tuple<string, string>("player", "threeYearCommandCounts"), saveDataManagerType.GetNestedType("OneYearCommandType") },
+                { new Tuple<string, string>("player", "stayCommandCounts"), saveDataManagerType.GetNestedType("OneYearCommandType") },
+                { new Tuple<string, string>("player", "isCheckShops"), saveDataManagerType.GetNestedType("ShopId") },
+                { new Tuple<string, string>("player", "isCheckDateContents"), saveDataManagerType.GetNestedType("DateContent") },
+                { new Tuple<string, string>("progress", "cycleCounts"), saveDataManagerType.GetNestedType("CycleCountType") },
+                { new Tuple<string, string>("club", "isJoins"), saveDataManagerType.GetNestedType("ClubId") },
+                { new Tuple<string, string>("arbeit", "isJoins"), saveDataManagerType.GetNestedType("ArbeitId") },
+                { new Tuple<string, string>("arbeit", "isGetAddress"), saveDataManagerType.GetNestedType("ArbeitId") },
+                { new Tuple<string, string>("school", "lastScore"), saveDataManagerType.GetNestedType("TestChardId") },
+                { new Tuple<string, string>("player", "scriptWorks"), saveDataManagerType.GetNestedType("ScriptWork") },
+                
+            };
         }
         
         private void SetDynamicIcon()
@@ -241,6 +269,41 @@ namespace TMGSSaveEditor.Core
             if (t.BaseType == typeof(Array))
             {
                 Array arrayOfItems = (Array)o;
+        
+                int maxEnumIndex = -1;
+                Type cachedEnumType = null;
+
+                if (objInfo.fieldInfo != null)
+                {
+                    string className = objInfo.parentObj.GetType().Name;
+                    string fieldName = objInfo.fieldInfo.Name;
+
+                    if (!_fieldToEnumMap.TryGetValue(new Tuple<string, string>(className, fieldName), out cachedEnumType))
+                    {
+                        string parentVarName = "";
+                        foreach (var kvp in nodeToObjDict)
+                        {
+                            var siblings = kvp.Key.ItemsSource as ObservableCollection<TreeViewItem>;
+                            if (siblings != null && siblings.Contains(parent))
+                            {
+                                parentVarName = kvp.Value.fieldInfo?.Name ?? "";
+                                break;
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(parentVarName))
+                        {
+                            _fieldToEnumMap.TryGetValue(new Tuple<string, string>(parentVarName, fieldName), out cachedEnumType);
+                        }
+                    }
+
+                    if (cachedEnumType != null)
+                    {
+                        var enumValues = Enum.GetValues(cachedEnumType).Cast<int>();
+                        if (enumValues.Any()) maxEnumIndex = enumValues.Max();
+                    }
+                }
+
                 int i = 0;
                 foreach (var item in arrayOfItems)
                 {
@@ -252,32 +315,38 @@ namespace TMGSSaveEditor.Core
 
                     if (objInfo.fieldInfo != null)
                     {
-                        if (objInfo.fieldInfo.Name.Equals("approachChars", StringComparison.OrdinalIgnoreCase))
+                        if (objInfo.fieldInfo.Name.Equals("approachChars", StringComparison.OrdinalIgnoreCase) ||
+                            objInfo.fieldInfo.Name.Equals("titlePatternIndexs", StringComparison.OrdinalIgnoreCase))
                         {
                             if (_savedata.ApproachCharacterNames != null && i < _savedata.ApproachCharacterNames.Length)
                             {
-                                customSuffix = " - " + _savedata.ApproachCharacterNames[i];
+                                customSuffix = _savedata.ApproachCharacterNames[i];
+                                hideTypeName = true;
                             }
                         }
                         else if (objInfo.fieldInfo.Name.Equals("friendChars", StringComparison.OrdinalIgnoreCase))
                         {
                             if (_savedata.FriendCharacterNames != null && i < _savedata.FriendCharacterNames.Length)
                             {
-                                customSuffix = " - " + _savedata.FriendCharacterNames[i];
+                                customSuffix = _savedata.FriendCharacterNames[i];
+                                hideTypeName = true;
                             }
                         }
                         else if (objInfo.fieldInfo.Name.Equals("advChars", StringComparison.OrdinalIgnoreCase))
                         {
                             if (_savedata.AdvCharacterNames != null && i < _savedata.AdvCharacterNames.Length)
                             {
-                                customSuffix = " - " + _savedata.AdvCharacterNames[i];
+                                customSuffix = _savedata.AdvCharacterNames[i];
+                                hideTypeName = true;
                             }
                         }
-                        else if (objInfo.fieldInfo.Name.Equals("standardParams", StringComparison.OrdinalIgnoreCase))
+                        else if (objInfo.fieldInfo.Name.Equals("standardParams", StringComparison.OrdinalIgnoreCase) ||
+                                 objInfo.fieldInfo.Name.Equals("trainGipsParams", StringComparison.OrdinalIgnoreCase))
                         {
                             if (_savedata.ParameterNames != null && i < _savedata.ParameterNames.Length)
                             {
-                                customSuffix = " - " + _savedata.ParameterNames[i];
+                                customSuffix = _savedata.ParameterNames[i];
+                                hideTypeName = true;
                             }
                         }
                         else if (objInfo.fieldInfo.Name.Equals("isPossessionDresses", StringComparison.OrdinalIgnoreCase))
@@ -293,6 +362,172 @@ namespace TMGSSaveEditor.Core
 
                                 // Remove the hyphen prefix so it looks clean
                                 customSuffix = _savedata.ClothingNames[i];
+                                hideTypeName = true;
+                            }
+                        }
+                        else if (objInfo.fieldInfo.Name.Equals("dressIds", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (item is int dressId)
+                            {
+                                // Check if it's a valid ID within the bounds of our clothing array
+                                if (dressId >= 0 && _savedata.ClothingNames != null && dressId < _savedata.ClothingNames.Length)
+                                {
+                                    customSuffix = _savedata.ClothingNames[dressId];
+                                    hideTypeName = true; 
+                                }
+                                // Handle empty slots (usually represented by -1 in EquipData)
+                                else if (dressId == -1)
+                                {
+                                    customSuffix = "Empty";
+                                    hideTypeName = true;
+                                }
+                            }
+                        }
+                        else if (objInfo.fieldInfo.Name.Equals("trendDressTypes", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (item is int fashionId)
+                            {
+                                string[] schoolMonths = {
+                                    "April", "May", "June", "July", "August", "September",
+                                    "October", "November", "December", "January", "February", "March"
+                                };
+
+                                string monthPrefix = (i >= 0 && i < schoolMonths.Length) ? schoolMonths[i] + " - " : "";
+
+                                int arrayIndex = fashionId - 1;
+
+                                if (_savedata.FashionKindId != null && arrayIndex >= 0 && arrayIndex < _savedata.FashionKindId.Length)
+                                {
+                                    customSuffix = monthPrefix + _savedata.FashionKindId[arrayIndex];
+                                    hideTypeName = true;
+                                }
+                                else
+                                {
+                                    customSuffix = monthPrefix + "Empty";
+                                    hideTypeName = true;
+                                }
+                            }
+                        }
+                        else if (objInfo.fieldInfo.Name.Equals("trendColors", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (item is int colorId)
+                            {
+                                string[] schoolMonths = {
+                                    "April", "May", "June", "July", "August", "September",
+                                    "October", "November", "December", "January", "February", "March"
+                                };
+
+                                string monthPrefix = (i >= 0 && i < schoolMonths.Length) ? schoolMonths[i] + " - " : "";
+
+                                // Dynamically grab the FashionColorId enum from your savedata type
+                                Type fashionEnumType = _savedata.GetType().GetNestedType("FashionColorId");
+
+                                if (fashionEnumType != null && Enum.IsDefined(fashionEnumType, colorId))
+                                {
+                                    customSuffix = monthPrefix + Enum.GetName(fashionEnumType, colorId);
+                                    hideTypeName = true;
+                                }
+                                else
+                                {
+                                    // Fallback for empty slots or invalid IDs (like 0 if the enum explicitly starts at 1)
+                                    customSuffix = monthPrefix + "Empty";
+                                    hideTypeName = true;
+                                }
+                            }
+                        }
+                        else if (objInfo.fieldInfo.Name.Equals("trendAccessoryTypes", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (item is int fashionId)
+                            {
+                                string[] schoolMonths = {
+                                    "April", "May", "June", "July", "August", "September",
+                                    "October", "November", "December", "January", "February", "March"
+                                };
+
+                                // Calculate the current year (1, 2, or 3) and the month index (0 to 11)
+                                int year = (i / 12) + 1;
+                                int monthIndex = i % 12;
+
+                                string monthPrefix = $"Year {year} {schoolMonths[monthIndex]} - ";
+
+                                int arrayIndex = fashionId - 1;
+
+                                if (_savedata.AccessoryKindId != null && arrayIndex >= 0 && arrayIndex < _savedata.AccessoryKindId.Length)
+                                {
+                                    customSuffix = monthPrefix + _savedata.AccessoryKindId[arrayIndex];
+                                    hideTypeName = true;
+                                }
+                                else
+                                {
+                                    customSuffix = monthPrefix + "Empty";
+                                    hideTypeName = true;
+                                }
+                            }
+                        }
+                        else if (objInfo.fieldInfo.Name.Equals("happyItemAccessoryTypes", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (item is int fashionId)
+                            {
+                                string[] schoolMonths = {
+                                    "April", "May", "June", "July", "August", "September",
+                                    "October", "November", "December", "January", "February", "March"
+                                };
+
+                                string monthPrefix = (i >= 0 && i < schoolMonths.Length) ? schoolMonths[i] + " - " : "";
+
+                                int arrayIndex = fashionId - 1;
+
+                                if (_savedata.AccessoryKindId != null && arrayIndex >= 0 && arrayIndex < _savedata.AccessoryKindId.Length)
+                                {
+                                    customSuffix = monthPrefix + _savedata.AccessoryKindId[arrayIndex];
+                                    hideTypeName = true;
+                                }
+                                else
+                                {
+                                    customSuffix = monthPrefix + "Empty";
+                                    hideTypeName = true;
+                                }
+                            }
+                        }
+                        else if (objInfo.fieldInfo.Name.Equals("chocoChars", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // 1. Get the chocolate type (e.g., "Courtesy") using the array index 'i'
+                            string chocoPrefix = "";
+                            Type chocoEnumType = _savedata.GetType().GetNestedType("ChocoType");
+
+                            if (chocoEnumType != null && Enum.IsDefined(chocoEnumType, i))
+                            {
+                                chocoPrefix = Enum.GetName(chocoEnumType, i) + " - ";
+                            }
+
+                            // 2. Get the integer value of the current item
+                            int charIdValue = Convert.ToInt32(item);
+
+                            // 3. Look up the character name (e.g., "Hazuki") in the NamedCharacterId enum
+                            Type namedCharEnumType = _savedata.GetType().GetNestedType("NamedCharacterId");
+
+                            if (namedCharEnumType != null && Enum.IsDefined(namedCharEnumType, charIdValue))
+                            {
+                                customSuffix = chocoPrefix + Enum.GetName(namedCharEnumType, charIdValue);
+                                hideTypeName = true;
+                            }
+                            else
+                            {
+                                // Handle empty slots (like -1 / None)
+                                customSuffix = chocoPrefix + "Empty";
+                                hideTypeName = true;
+                            }
+                        }
+                        else if (cachedEnumType != null)
+                        {
+                            if (maxEnumIndex != -1 && i > maxEnumIndex)
+                            {
+                                break;
+                            }
+
+                            if (Enum.IsDefined(cachedEnumType, i))
+                            {
+                                customSuffix = Enum.GetName(cachedEnumType, i);
                                 hideTypeName = true;
                             }
                         }
@@ -359,7 +594,21 @@ namespace TMGSSaveEditor.Core
                 }
                 else if (childType.Namespace != "GS4" && childType.BaseType?.Name != "Array" || childType.BaseType == typeof(Enum))
                 {
-                    childNode = new TreeViewItem { Header = String.Format("{0}: {1}", x.Name, childObject.ToString()) };
+                    string headerText = String.Format("{0}: {1}", x.Name, childObject.ToString());
+
+                    if (childType.BaseType == typeof(Enum) && childType.Name == "CharacterId")
+                    {
+                        int charIdValue = Convert.ToInt32(childObject);
+                        Type namedCharEnumType = _savedata.GetType().GetNestedType("NamedCharacterId");
+
+                        if (namedCharEnumType != null && Enum.IsDefined(namedCharEnumType, charIdValue))
+                        {
+                            string charName = Enum.GetName(namedCharEnumType, charIdValue);
+                            headerText = String.Format("{0} - {1}: {2}", x.Name, charName, childObject.ToString());
+                        }
+                    }
+
+                    childNode = new TreeViewItem { Header = headerText };
                 }
                 else
                 {

@@ -19,5 +19,26 @@ namespace TMGSSaveEditor.Core
         string[] ParameterNames { get; }
         string[] ClothingNames { get; }
 
+        enum CycleCountType;
+
+        enum PlayerFlag;
+
+        enum CharFlag;
+
+        enum CharCounter;
+
+        enum DateTopicBoy;
+
+        enum EndingId;
+
+        enum OneYearCommandType;
+
+        enum ShopId;
+
+        enum DateContent;
+
+        string[] FashionKindId { get; }
+        string[] AccessoryKindId { get; }
+
     }
 }

@@ -8,6 +8,7 @@ namespace TMGSSaveEditor.Core
 {
     public partial class CheatsWindow : Window
     {
+        private const BindingFlags DefaultFlags = BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance;
         private MainWindow _mainWindow;
 
         public CheatsWindow()
@@ -45,15 +46,15 @@ namespace TMGSSaveEditor.Core
 
             try
             {
-                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", DefaultFlags);
                 if (playerField == null) return;
                 object playerObj = playerField.GetValue(_mainWindow.data);
 
-                FieldInfo fashionField = playerObj.GetType().GetField("fashion", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo fashionField = playerObj.GetType().GetField("fashion", DefaultFlags);
                 if (fashionField == null) return;
                 object fashionObj = fashionField.GetValue(playerObj);
 
-                FieldInfo dressesField = fashionObj.GetType().GetField("isPossessionDresses", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo dressesField = fashionObj.GetType().GetField("isPossessionDresses", DefaultFlags);
                 if (dressesField == null) return;
 
                 bool[] dressesArr = (bool[])dressesField.GetValue(fashionObj);
@@ -91,11 +92,11 @@ namespace TMGSSaveEditor.Core
 
             try
             {
-                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", DefaultFlags);
                 if (playerField == null) return;
                 object playerObj = playerField.GetValue(_mainWindow.data);
 
-                FieldInfo paramsField = playerObj.GetType().GetField("standardParams", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo paramsField = playerObj.GetType().GetField("standardParams", DefaultFlags);
                 if (paramsField == null) return;
 
                 float[] paramsArr = (float[])paramsField.GetValue(playerObj);
@@ -122,11 +123,11 @@ namespace TMGSSaveEditor.Core
             if (_mainWindow.data == null) return;
             try
             {
-                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", DefaultFlags);
                 if (playerField == null) return;
                 object playerObj = playerField.GetValue(_mainWindow.data);
 
-                FieldInfo paramsField = playerObj.GetType().GetField("standardParams", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo paramsField = playerObj.GetType().GetField("standardParams", DefaultFlags);
                 if (paramsField == null) return;
 
                 float[] paramsArr = (float[])paramsField.GetValue(playerObj);
@@ -148,11 +149,11 @@ namespace TMGSSaveEditor.Core
             if (_mainWindow.data == null) return;
             try
             {
-                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo playerField = _mainWindow.data.GetType().GetField("player", DefaultFlags);
                 if (playerField == null) return;
                 object playerObj = playerField.GetValue(_mainWindow.data);
 
-                FieldInfo paramsField = playerObj.GetType().GetField("standardParams", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo paramsField = playerObj.GetType().GetField("standardParams", DefaultFlags);
                 if (paramsField == null) return;
 
                 float[] paramsArr = (float[])paramsField.GetValue(playerObj);
@@ -177,22 +178,40 @@ namespace TMGSSaveEditor.Core
 
             Type charType = character.GetType();
 
-            FieldInfo lovePointField = charType.GetField("lovePoint", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-            FieldInfo friendPointField = charType.GetField("friendPoint", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-            FieldInfo emotionStateField = charType.GetField("emotionState", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-            FieldInfo intimatePointField= charType.GetField("intimatePoint", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo lovePointField = charType.GetField("lovePoint", DefaultFlags);
+            FieldInfo friendPointField = charType.GetField("friendPoint", DefaultFlags);
+            FieldInfo emotionStateField = charType.GetField("emotionState", DefaultFlags);
+            FieldInfo initimatePointField = charType.GetField("initimatePoint", DefaultFlags);
+            FieldInfo initimatePointTotalField = charType.GetField("initimatePointTotal", DefaultFlags);
+            FieldInfo loveSwellField = charType.GetField("LoveSwell", DefaultFlags);
+            FieldInfo friendSwellField = charType.GetField("FriendSwell", DefaultFlags);
+            FieldInfo loveSwellPlusField = charType.GetField("LoveSwellPlus", DefaultFlags);
+            FieldInfo friendSwellPlusField = charType.GetField("FriendSwellPlus", DefaultFlags);
+            FieldInfo loveSwellPlusAllField = charType.GetField("LoveSwellPlusAll", DefaultFlags);
+            FieldInfo friendSwellPlusAllField = charType.GetField("FriendSwellPlusAll", DefaultFlags);
+            FieldInfo swellPlusAllField = charType.GetField("SwellPlusAll", DefaultFlags);
 
             if (lovePointField != null) lovePointField.SetValue(character, 255);
             if (friendPointField != null) friendPointField.SetValue(character, 255);
-            if (intimatePointField != null) intimatePointField.SetValue(character, 400);
+            if (initimatePointField != null) initimatePointField.SetValue(character, 400);
+            if (initimatePointTotalField != null) initimatePointTotalField.SetValue(character, 400);
+            if (loveSwellField != null) loveSwellField.SetValue(character, 1200);
+            if (friendSwellField != null) friendSwellField.SetValue(character, 1000);
+            if (loveSwellPlusField != null) loveSwellPlusField.SetValue(character, 1200);
+            if (friendSwellPlusField != null) friendSwellPlusField.SetValue(character, 1000);
+            if (loveSwellPlusAllField != null) loveSwellPlusAllField.SetValue(character, 1200);
+            if (friendSwellPlusAllField != null) friendSwellPlusAllField.SetValue(character, 1000);
+            if (swellPlusAllField != null) swellPlusAllField.SetValue(character, 2200);
 
             if (emotionStateField != null)
             {
                 object loveEnumValue = Enum.ToObject(emotionStateField.FieldType, 5);
                 emotionStateField.SetValue(character, loveEnumValue);
             }
-
+            
+            Debug.WriteLine($"Updated character: Initimate={initimatePointField?.GetValue(character)}, InitimateTotal={initimatePointTotalField?.GetValue(character)}");
             Debug.WriteLine($"Updated character: Love={lovePointField?.GetValue(character)}, Friend={friendPointField?.GetValue(character)}, EmotionState={emotionStateField?.GetValue(character)}");
+            Debug.WriteLine($"Updated character: LoveSwell={loveSwellField?.GetValue(character)}, FriendSwell={friendSwellField?.GetValue(character)}, SwellPlusAll={swellPlusAllField?.GetValue(character)}");
         }
 
         private void MaximizeAllInArray(string arrayFieldName)
@@ -201,7 +220,7 @@ namespace TMGSSaveEditor.Core
 
             try
             {
-                FieldInfo arrayField = _mainWindow.data.GetType().GetField(arrayFieldName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo arrayField = _mainWindow.data.GetType().GetField(arrayFieldName, DefaultFlags);
                 if (arrayField == null) return;
 
                 Array charsArray = (Array)arrayField.GetValue(_mainWindow.data);
@@ -226,7 +245,7 @@ namespace TMGSSaveEditor.Core
 
             try
             {
-                FieldInfo arrayField = _mainWindow.data.GetType().GetField(arrayFieldName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo arrayField = _mainWindow.data.GetType().GetField(arrayFieldName, DefaultFlags);
                 if (arrayField == null) return;
 
                 Array charsArray = (Array)arrayField.GetValue(_mainWindow.data);
